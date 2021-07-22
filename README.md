@@ -1,6 +1,7 @@
 # AI-Brain-Boost-API-Dockerized (Back-End)
 The Fullstack AI project for Detecting Face! 
-Dockerizing API & Adding Authentication Flow by JWT/Redis
+* Dockerizing API
+* Adding Authentication Flow by JWT/Redis
 
 ## 1. docker-compose
 
