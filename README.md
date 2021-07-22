@@ -27,6 +27,7 @@ const signToken=(email) => {
 source: https://github.com/auth0/node-jsonwebtoken
 
 ## 3. Redis: Save and Retreive Token
+* ./controllers/signin.js
 
 ```
 const redis = require('redis');
