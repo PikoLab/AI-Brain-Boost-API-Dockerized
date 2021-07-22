@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+
+  # PostgreSQL
+  postgres:
+    container_name: postgresdb
+    build: ./postgres
+    environment: 
+      POSTGRES_DB: smartbrain
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: postgres
+    ports:
+      - "5432:5432"
+
+  # Redis    
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - "6379:6379"
+      
+  # Backend api
+  ai-brain-api:
+    container_name: backend
+    build: ./
+    command: npm start
+    working_dir: /usr/src/ai-brain-api
+    environment: 
+      POSTGRES_URI: postgres://postgres:password@postgres:5432/smartbrain
+      REDIS_URI: redis://redis:6379
+    links:
+      - postgres
+      - redis 
+    ports: 
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/ai-brain-api
